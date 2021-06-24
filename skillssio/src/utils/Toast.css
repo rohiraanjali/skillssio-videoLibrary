@@ -1,0 +1,11 @@
+.alert-style {
+    font-size: 20;
+    background-color: red;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+}

@@ -2,10 +2,10 @@ import { NavLink , Link} from "react-router-dom";
 import playerLogo from "./video-logo1.png";
 import React from "react";
 import {useVideo} from "../contexts/VideoContext"
+import videoPlayer from "./React-Player"
 
+import "./Home.css"
 const Sidebar = () => {
-
-
     const {
         state: { playlists }
     } = useVideo();
@@ -96,7 +96,7 @@ const Sidebar = () => {
      </aside> : null}
      </div>
 
-     {isDesktop ? null : (
+     {videoPlayer && isDesktop ? null : (
         <div className="home-wrapper-mobile">
         <ul className="home-wrapper__div__bottom__list">
           <NavLink to="/" className="side-nav-link">

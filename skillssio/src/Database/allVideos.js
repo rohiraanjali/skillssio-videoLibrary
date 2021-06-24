@@ -118,7 +118,7 @@ export const allVideos = [
       id: "v=VfixnLRroD8",
       avatar: "https://yt3.ggpht.com/ytc/AAUvwniLZs5ppfzXt9dRGdl5KobpYE4pQscCDdHlG_gKeA=s88-c-k-c0x00ffffff-no-rj",
       videoTitle:
-        "Cinematic Animated Promo Video - After Effects Tutorial [Part 1]",
+        "Cinematic Animated Promo Video - After Effects Tutorial-1",
       channelName: "Design Pilot",
       level: "Advanced",
       thumbnail:
@@ -128,7 +128,7 @@ export const allVideos = [
       id: "v=XUXc_uSs7Jg",
       avatar: "https://yt3.ggpht.com/ytc/AAUvwniLZs5ppfzXt9dRGdl5KobpYE4pQscCDdHlG_gKeA=s88-c-k-c0x00ffffff-no-rj",
       videoTitle:
-        "Mobile App UI Animated Promo Video - After Effects Tutorial [Part 2]",
+        "Mobile App UI Animated Promo Video - After Effects Tutorial-2",
       channelName: "Design Pilot",
       level: "Advanced",
       thumbnail:
@@ -138,7 +138,7 @@ export const allVideos = [
       id: "v=EDPZ2UQPt58",
       avatar: "https://yt3.ggpht.com/ytc/AAUvwniLZs5ppfzXt9dRGdl5KobpYE4pQscCDdHlG_gKeA=s88-c-k-c0x00ffffff-no-rj",
       videoTitle:
-        "Mobile App UI Animated Promo Video - After Effects Tutorial [Part 3]",
+        "Mobile App UI Animated Promo Video - After Effects Tutorial-3",
       channelName: "Design Pilot",
       level: "Advanced",
       thumbnail:

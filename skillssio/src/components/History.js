@@ -1,11 +1,20 @@
 
-import "../App.css"
-import React from "react";
+import "./Home.css"
+import React ,{useEffect} from "react";
 import { NavLink , Link} from "react-router-dom";
 import { useVideo } from "../contexts/VideoContext";
 import {allVideos} from "../Database/allVideos";
 import Sidebar from "./sidebar";
+import Navbar from "./Navbar";
 const HistoryVideos = () => {
+  
+  useEffect( () => {
+    window.scroll({
+      behavior:"smooth",
+      top:0
+    })
+},[])
+
   const {
     state: { historyVideos }
   } = useVideo();
@@ -22,12 +31,12 @@ const HistoryVideos = () => {
 <Sidebar />
       
      <div className="home-wrapper__main">   
-       <main className="home-wrapper__main">
+     <Navbar />
       {historyVideos.length === 0 ? (
         <h1 className="empty-state">No videos seen yet!</h1>)
         : (<h3 className="discover_home">Watch History</h3>)
       }
-      <div className= "videos-list-showcase designVideoList">
+      <div className= "videos-list-showcase-1 designVideoList">
         {filteredHistoryVideos.map((item) => {
           return (
             <Link to={`/video/${item.id}`} className="video-item-link pointer">
@@ -53,7 +62,6 @@ const HistoryVideos = () => {
         })}
         
       </div>
-      </main>
       <h3 className="discover_home">Discover More</h3>
       <main
         className="videos-list-showcase designVideoList"

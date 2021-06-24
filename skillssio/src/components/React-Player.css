@@ -1,0 +1,249 @@
+
+    .player-wrapper {
+        overflow: initial;
+        width: auto;
+        background-color: var(--background-main);
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        padding: 0px 80px 0px 80px;
+      }
+      .player-div {
+        position: relative;
+        top: 40px;
+      }
+      .badge {
+        background: hsl(0deg 0% 18%);
+        text-align: center;
+        width: 40%;
+        padding: 10px;
+        border-radius: 10%;
+      }
+      .suggestion-div {
+        background-color: var(--background-main);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
+        width: auto;
+        position: relative;
+        top: 40px;
+        /* padding: 10px 24px 0px 0px; */
+      }
+      .video-DisplayTitle {
+        color: white;
+        font-size: 1.2rem;
+        font-family: var(--font-fam-2);
+      }
+      .video-views-date {
+        color: grey;
+        font-size: 1rem;
+        position: relative;
+        bottom: 5px;
+      }
+      .player-control {
+        padding-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .video-controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+        position: relative;
+        top: 15px;
+      }
+      .flex {
+        background-color: hsl(0deg 0% 0% / 0%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: none;
+      }
+      .fa-clock,
+      .fa-list {
+        font-size: 1.2rem;
+      }
+      .control-icons {
+        font-size: 1.2rem;
+      }
+      .like-counter {
+        color: white;
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+        line-height: 2rem;
+      }
+      .fa-thumbs-down,
+      .fa-thumbs-up {
+        font-size: 1.5rem;
+        color: grey;
+      }
+      .video-description-player {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        font-family: var(--font-fam-2);
+      }
+      
+      .video-item-playyerWrapper {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+      }
+      
+      .video-title-player {
+        font-size: 1rem;
+        font-weight: bolder;
+      }
+      
+      .small-description-player {
+        font-size: 0.8rem;
+        color: grey;
+      }
+      .playlistModal-wrapper {
+      }
+      .playlist {
+        position: absolute;
+        bottom: 79%;
+        left: 103%;
+        background: white;
+        opacity: 0.8;
+        border-radius: 10px;
+        display: block;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        width: 70%;
+        height: auto;
+        z-index: 1;
+        transition: opacity 500ms;
+        transition: all 2s ease-in-out;
+      }
+      .playlist::after {
+        z-index: -99;
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        border-color: transparent transparent #fff #fff;
+        transform-origin: 0 0;
+        transform: rotate(45deg);
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4);
+      }
+      
+      .playlist::before {
+        z-index: 10;
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: calc(25% - 5px);
+        left: 0;
+        box-sizing: border-box;
+        border: 5px solid black;
+        border-color: transparent transparent #fff #fff;
+        transform-origin: 0 0;
+        transform: rotate(45deg);
+      }
+      .playlistModal-header {
+        color: #333;
+        padding: 10px 0px 10px 10px;
+        font-family: var(--font-fam-2);
+      }
+      
+      .playlist-checkbox {
+        list-style: none;
+      }
+      .playlistModal-input {
+        padding: 10px;
+        font-family: var(--font-fam-2);
+      }
+      .playlistModal-inputBox {
+        border: 2px solid black;
+        padding: 10px;
+        width: 60%;
+      }
+      .playlistModal-footer {
+        padding: 10px;
+        font-family: var(--font-fam-2);
+      }
+      .watchlater-checkbox p {
+        font-size: 1rem;
+      }
+      
+      .close-btn {
+        padding: 8px;
+        border-radius: 5px;
+        font-weight: 550;
+        width: 30%;
+      }
+      .plus-btn {
+        border: 2px solid black;
+        padding: 10px;
+        border: none;
+        box-shadow: 1pc;
+        background-color: lightgray;
+        border-radius: 50%;
+      }
+      .plus-btn[disabled] {
+        background-color: whitesmoke;
+        color: #333;
+      }
+      .playlist-name {
+        color: black;
+      }
+      .add-btn {
+        padding: 10px;
+        background: var(--background-main);
+        border: none;
+        color: white;
+        border-radius: 5px;
+        width: 30%;
+      }
+      .playlist-name {
+        color: white;
+      }
+      
+      .playlistModal-watchLater {
+        padding: 5px;
+        width: 30%;
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 1023px){
+    .player-wrapper {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1rem;
+            padding: 0px 80px 0px 80px;
+          }
+    .playlist {
+        bottom: 25%;
+        left: 50%;
+        width: 55%;
+      }
+    }
+
+    @media screen and  (max-width: 768px){
+        .player-wrapper {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1rem;
+            padding: 0px 10px 0px 10px;
+          }
+          .player-control {
+            padding-top: 10px;
+            display: block;
+          }
+          .video-controls {
+              justify-items: center;
+          }
+          .video-title-player {
+              font-size: 0.78rem;
+          }
+          .small-description-player {
+              font-size: 0.7rem;
+          }
+    }

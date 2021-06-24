@@ -1,0 +1,78 @@
+:root{
+    --primary:black;
+    --secondary:#29B6F6;
+    --terciary:#B2EBF2;
+}
+li {
+    list-style: none;
+}
+nav{
+    margin: 0;
+    padding: 0.5rem;
+    background-color: var(--primary);
+}
+nav .right{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.nav-wrapper form{
+    margin: 0;
+    width: 80%;
+}
+
+.search-container,
+.search-container-home {
+  display: block;
+  padding-right: 2rem;
+}
+.search-container {
+  margin: auto;
+}
+
+input#search-bar {
+  background-color: hsl(0deg 0% 20%);
+}
+input#search-bar,
+input#search-bar-home {
+  color: #808080;
+  border-radius: 5px;
+  width: 80%;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+
+.search-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  right: 35px;
+  top: 5px;
+
+}
+  
+.user-avatar {
+  font-size: 2rem;
+  display: block;
+  padding-top: 0.5rem;
+  padding-right: 2rem;
+  color: grey;
+}
+
+.loginmodal__dismiss__btn {
+  position: relative;
+  left: 440px;
+  bottom: 280px;
+  background-color: hsl(0deg 0% 10%);
+  color: white;
+  border: none;
+}
+
+.fa-times {
+  font-size: 1.2rem;
+}

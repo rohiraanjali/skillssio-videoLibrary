@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import ReactDOM from "react-dom";
 import { reducer, initialState, HANDLE_LIKE, HANDLE_DISLIKE } from "./LikeReducer";
 import { NavLink, useParams } from "react-router-dom";
 import PlaylistModal from "./PlaylistModal"
@@ -10,6 +9,9 @@ import { allVideos } from "../Database/allVideos";
 import { checkingItem } from "../utils/checkingItem";
 import {Link} from "react-router-dom";
 import playerLogo from "./video-logo1.png";
+import "./React-Player.css";
+import Navbar from "./Navbar";
+import Sidebar from "./sidebar";
 
  const VideoPlayer = () => {
   const [iconColor , setIconColor] = React.useState("grey")
@@ -34,25 +36,10 @@ const likeVideo = () => {
   }
   // active !== "like" ? likeDispatch({ type: HANDLE_LIKE }) : null
 }
-
-
   return (
     <>
      <div className="player-playlistModal">
-     <nav className="nav-wrapper">
-        <div className="list-logo-wrapper">
-          <NavLink to="/">
-          <div className="player-logo-wrapper">
-          <img className="player-logo" src={playerLogo} />
-          </div>
-          </NavLink>
-         <div className="search-container-wrapper"> <form className="search-container">
-    <input type="text" id="search-bar" placeholder="What can I help you with today?" />
-    <a href="#"><img className="search-icon" src={searchIcon}/></a>
-  </form></div>
-  <div className="user-avatar"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-        </div>
-      </nav>
+    <Navbar />
     <div className="player-wrapper">
       <div className="player-div"> 
       <ReactPlayer
