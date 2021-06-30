@@ -26,13 +26,12 @@ function App() {
        {!isUserLoggedIn && <Route path="/register" element={<RegistrationForm/>} />}
       </Route>
       <Route path="/video/:videoId" element={<VideoPlayer />} />
-      <Route path="/history" element={<HistoryVideos />} />
+      <PrivateRoute path="/history" element={<HistoryVideos />} >
+       </PrivateRoute>
       <Route path="/likedVideos" element={<LikedVideos />} />
       <Route path="/playlist" element={<Playlist />} />
       <Route path="/watchLaterVideos" element={<WatchLater />} />
       <Route path="/search" element={<SearchPage />} />
-      <PrivateRoute path="/history" element={<History/>}/>
-
       </Routes>
     </div>
   );
