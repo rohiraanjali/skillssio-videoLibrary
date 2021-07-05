@@ -1,4 +1,4 @@
-export const allVideos = [
+export const videos = [
     {
       id: "v=omKQsOPAjjk",
       avatar: "https://yt3.ggpht.com/ytc/AAUvwnhm2iTCU8iC7tynG2XBvDbf0prYPd86xoywHVPQ=s88-c-k-c0x00ffffff-no-rj",

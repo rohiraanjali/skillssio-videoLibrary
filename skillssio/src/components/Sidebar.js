@@ -37,7 +37,7 @@ const Sidebar = () => {
            </li>
          </NavLink>
 
-         <NavLink to="/explore" className="side-nav-link">
+         <NavLink to="/search" className="side-nav-link">
              <li className="pointer">
              <div className="bg-pointer" style={{ width: "220px", marginLeft: "8px" , padding: "10px" , textAlign: "left"}}>
              <i className="fas fa-search" aria-hidden="true"></i>
@@ -105,7 +105,7 @@ const Sidebar = () => {
             </li>
           </NavLink>
 
-          <NavLink to="/watchHistory" className="side-nav-link">
+          <NavLink to="/history" className="side-nav-link">
             <li className="pointer-mobile">
               <i className="fas fa-history pointer"></i>
             </li>
@@ -123,7 +123,7 @@ const Sidebar = () => {
             </li>
           </NavLink>
          
-          <NavLink to="/watchHistory" className="side-nav-link">
+          <NavLink to="/playlist" className="side-nav-link">
             <li className="pointer-mobile">
             <i className="fas fa-list pointer"></i>
             </li>

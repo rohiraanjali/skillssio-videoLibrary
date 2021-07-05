@@ -6,6 +6,7 @@ import MainScreen from "./MainScreen"
 
 import axios from 'axios';
 import { Form , Button} from 'react-bootstrap';
+import LoginForm from './LoginForm';
 
 const RegistrationForm = () => {
    useEffect(() => {
@@ -81,9 +82,10 @@ const RegistrationForm = () => {
     return (
       <MainScreen title="Signup to continue">
       <div className="loginContainer">
-      <Loading show={loading}/>
       {toast && <ToastMessage style={{backgroundColor: "red"}}variant="danger">{toast}</ToastMessage>}
+      {loading && <Loading />}
       <form onSubmit={handleSubmit}>
+      
       <div className="input-div">
       <Form.Group controlId="formBasicName">
       <Form.Label className="input-label">Full Name</Form.Label>

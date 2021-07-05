@@ -36,7 +36,7 @@ return (
                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </div> : 
                             <button className="sigout-btn" onClick={() => signout(setLoading)}>
-                             Signout<i className="fa fa-sign-out"></i>
+                             <i className="fa fa-sign-out"></i>
                             </button>
                             }
                         </li>

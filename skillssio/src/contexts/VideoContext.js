@@ -49,6 +49,9 @@ export const VideoProvider = ({ children }) => {
         });
         return { ...state, playlists: [...result] };
       }
+      case "UPDATE_VIDEOS": {
+        return {...state, videos: action.payload.data}
+      }
       default:
         return state;
     }
@@ -60,9 +63,10 @@ export const VideoProvider = ({ children }) => {
     likedVideos: [],
     playlists: [],
     laterVideos: [],
-    
+    videos:[]
   }
   const [state, dispatch] = useReducer(VideoReducer, initialState);
+  console.log(state)
   return (
     <div>
       <VideoContext.Provider value={{ state, dispatch }}>

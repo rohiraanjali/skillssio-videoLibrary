@@ -70,11 +70,9 @@ return (
     <MainScreen title="Log in to continue">
         <div className="loginContainer" >
         {Error && <ToastMessage style={{backgroundColor: "red"}}variant="danger">{Error}</ToastMessage>}
-        {loading && <Loading />}
         <br />
-        
-
             <Form onSubmit={submitHandler}>
+            {loading && <Loading />}
             <div className="input-div">
                 <Form.Group controlId="formBasicEmail" >
                     <Form.Label className="input-label">Email Address</Form.Label>

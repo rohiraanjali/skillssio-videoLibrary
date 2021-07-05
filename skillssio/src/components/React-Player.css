@@ -7,7 +7,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1rem;
-        padding: 0px 80px 0px 80px;
+        padding: 0px 50px 0px 50px;
       }
       .player-div {
         position: relative;
@@ -104,56 +104,23 @@
         font-size: 0.8rem;
         color: grey;
       }
-      .playlistModal-wrapper {
-      }
-      .playlist {
-        position: absolute;
-        bottom: 79%;
-        left: 103%;
-        background: white;
-        opacity: 0.8;
-        border-radius: 10px;
-        display: block;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-        width: 70%;
-        height: auto;
-        z-index: 1;
-        transition: opacity 500ms;
-        transition: all 2s ease-in-out;
-      }
-      .playlist::after {
-        z-index: -99;
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        box-sizing: border-box;
-        border-color: transparent transparent #fff #fff;
-        transform-origin: 0 0;
-        transform: rotate(45deg);
-        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4);
-      }
       
-      .playlist::before {
-        z-index: 10;
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        bottom: calc(25% - 5px);
-        left: 0;
-        box-sizing: border-box;
-        border: 5px solid black;
-        border-color: transparent transparent #fff #fff;
-        transform-origin: 0 0;
-        transform: rotate(45deg);
+       .playlistModal-wrapper {
+         background-color: hsl(0deg 0% 13%);
+         width: 90%;
       }
       .playlistModal-header {
-        color: #333;
-        padding: 10px 0px 10px 10px;
+        color: white;
+        /* padding: 10px 0px 10px 10px; */
         font-family: var(--font-fam-2);
+        text-align: center;
       }
-      
+   
+      .playlistModal-description {
+        color: grey;
+        text-align: left;
+        padding: 10px;
+      }
       .playlist-checkbox {
         list-style: none;
       }
@@ -168,17 +135,31 @@
       }
       .playlistModal-footer {
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
         font-family: var(--font-fam-2);
       }
+      .watchLater {
+        background-color: grey;
+        width: 36%;
+        margin-left: 10px;
+      }   
       .watchlater-checkbox p {
-        font-size: 1rem;
+        /* font-size: 0.8rem; */
       }
-      
+      .watchlaterLabel {
+        font-size: 1rem;
+        font-weight: 550;
+        text-align: center;
+      }
       .close-btn {
-        padding: 8px;
+        padding: 10px;
         border-radius: 5px;
         font-weight: 550;
-        width: 30%;
+        width: 100%;
+        border: none;
       }
       .plus-btn {
         border: 2px solid black;
@@ -192,21 +173,21 @@
         background-color: whitesmoke;
         color: #333;
       }
-      .playlist-name {
-        color: black;
-      }
       .add-btn {
         padding: 10px;
-        background: var(--background-main);
+        background: #4caf50;
         border: none;
+        font-weight: 550;
         color: white;
         border-radius: 5px;
-        width: 30%;
+        width: 100%;
       }
       .playlist-name {
         color: white;
       }
-      
+      .playlistName-label {
+        color: whitesmoke;
+      }
       .playlistModal-watchLater {
         padding: 5px;
         width: 30%;
@@ -224,6 +205,12 @@
         left: 50%;
         width: 55%;
       }
+    }
+    @media screen and (min-width: 1024px) {
+      .video-controls{
+        /* top: 30px; */
+      }
+      
     }
 
     @media screen and  (max-width: 768px){
@@ -247,3 +234,25 @@
               font-size: 0.7rem;
           }
     }
+
+    @media screen and (min-width: 768px) and (max-width: 1023px){
+      .playlistModal-wrapper {
+         width: 50%;
+      }
+      }
+      
+      @media screen and (min-width: 1024px){
+          .playlistModal-wrapper {
+             width: 30%;
+          }
+          .playlistModal-footer {
+            flex-direction: row;
+          }
+          .close-btn{
+            width: 50%
+          }
+          .add-btn{
+           width: 50%;
+          }
+          
+          }

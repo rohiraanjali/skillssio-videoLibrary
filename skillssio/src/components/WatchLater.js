@@ -1,34 +1,41 @@
 
-import "../App.css"
-import React from "react";
+import "./Home.css"
+import React ,{useEffect} from "react";
 import { NavLink , Link} from "react-router-dom";
 import { useVideo } from "../contexts/VideoContext";
-import {allVideos} from "../Database/allVideos";
+import {videos} from "../Database/allVideos";
 import Sidebar from "./sidebar";
+import Navbar from "./Navbar";
 const WatchLater = () => {
-  const {
-    state: { laterVideos }
-  } = useVideo();
-
-  console.log(laterVideos);
-  const getFilteredVideos = (laterVideos) => {
-    return laterVideos.filter((item) => item.existsInLaterVideos);
-  };
-
-  const filteredLaterVideos = getFilteredVideos(laterVideos);
   
-    return (
+  useEffect( () => {
+    window.scroll({
+      behavior:"smooth",
+      top:0
+    })
+},[])
+const {
+      state: { laterVideos }
+    } = useVideo();
+  
+    console.log(laterVideos);
+    const getFilteredVideos = (laterVideos) => {
+      return laterVideos.filter((item) => item.existsInLaterVideos);
+    };
+  
+    const filteredLaterVideos = getFilteredVideos(laterVideos);
+  return (
 <div className="main_wrapper">
 <Sidebar />
       
      <div className="home-wrapper__main">   
-       <main className="home-wrapper__main">
-      {laterVideos.length === 0 ? (
-        <h1 className="empty-state">No videos seen yet!</h1>)
-        : (<h3 className="discover_home">Watch History</h3>)
+     <Navbar />
+     {laterVideos.length === 0 ? (
+        <h1 className="empty-state">No videos added for later!</h1>)
+        : (<h3 className="discover_home">Saved - Watch Later </h3>)
       }
-      <div className= "videos-list-showcase designVideoList">
-        {filteredLaterVideos.map((item) => {
+      <div className= "filteredLaterVideos">
+      {filteredLaterVideos.map((item) => {
           return (
             <Link to={`/video/${item.id}`} className="video-item-link pointer">
               <div
@@ -36,7 +43,7 @@ const WatchLater = () => {
                 key={item.id}
               >
                 <img
-                  style={{ width: "250px" }}
+                  style={{ width: "280px" }}
                   className="thumbnail-img"
                   src={item.thumbnail}
                   alt="thumbnail"
@@ -44,21 +51,27 @@ const WatchLater = () => {
                 <div className="video-description">
                     <img className="avatar-img" src={item.avatar} alt="avatar"/>
                   <h4 className="video-title">{item.videoTitle}</h4>
+                  <span>
+                  <i style={{color: "red", float: "right", padding: "10px", backgroundColor: "hsl(0deg 0% 20%)", borderRadius: "100%"}} className="far fa-trash-alt"></i>
+                  </span>
                   <p className="small-description">{item.channelName}</p>
                   <p className="small-level">Level: {item.level}</p>
+
                 </div>
+  
               </div>
             </Link>
           );
         })}
-        
       </div>
-      </main>
-      <h3 className="discover_home">Discover More</h3>
+
+      <br />
+      <br />
+      <h3 className="discover_more">Discover More</h3>
       <main
-        className="videos-list-showcase designVideoList"
+        className="videos-list-showcase-1 designVideoList"
       >
-        {allVideos.map((item) => {
+        {videos.map((item) => {
           return (
             <Link to={`/video/${item.id}`} className="video-item-link pointer">
               <div
@@ -66,7 +79,7 @@ const WatchLater = () => {
                 key={item.id}
               >
                 <img
-                  style={{ width: "250px" }}
+                  style={{ width: "280px" }}
                   className="thumbnail-img"
                   src={item.thumbnail}
                   alt="thumbnail"

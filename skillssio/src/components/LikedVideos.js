@@ -1,33 +1,42 @@
 
-import "../App.css"
-import React from "react";
+import "./Home.css"
+import React ,{useEffect} from "react";
 import { NavLink , Link} from "react-router-dom";
 import { useVideo } from "../contexts/VideoContext";
-import {allVideos} from "../Database/allVideos";
+import {videos} from "../Database/allVideos";
 import Sidebar from "./sidebar";
+import Navbar from "./Navbar";
 const LikedVideos = () => {
-    const {
-        state: { likedVideos }
-      } = useVideo();
-    
-      console.log(likedVideos);
-      const getFilteredVideos = (likedVideos) => {
-        return likedVideos.filter((item) => item.existsInLikedVideos);
-      };
-      const filteredLikedVideos = getFilteredVideos(likedVideos);
+  
+  useEffect( () => {
+    window.scroll({
+      behavior:"smooth",
+      top:0
+    })
+},[])
 
+const {
+          state: { likedVideos }
+        } = useVideo();
+      
+        console.log(likedVideos);
+        const getFilteredVideos = (likedVideos) => {
+          return likedVideos.filter((item) => item.existsInLikedVideos);
+        };
+        const filteredLikedVideos = getFilteredVideos(likedVideos);
+  
     return (
 <div className="main_wrapper">
 <Sidebar />
       
      <div className="home-wrapper__main">   
-       <main className="home-wrapper__main">
-      {likedVideos.length === 0 ? (
-        <h1 className="empty-history">No Videos Liked yet!</h1>)
+     <Navbar />
+     {likedVideos.length === 0 ? (
+        <h1 className="empty-state">No Videos Liked yet!</h1>)
         : (<h3 className="discover_home">Liked Videos</h3>)
       }
-      <div className= "videos-list-showcase designVideoList">
-        {filteredLikedVideos.map((item) => {
+      <div className= "filteredLikedVideos">
+      {filteredLikedVideos.map((item) => {
           return (
             <Link to={`/video/${item.id}`} className="video-item-link pointer">
               <div
@@ -35,7 +44,7 @@ const LikedVideos = () => {
                 key={item.id}
               >
                 <img
-                  style={{ width: "250px" }}
+                  style={{ width: "280px" }}
                   className="thumbnail-img"
                   src={item.thumbnail}
                   alt="thumbnail"
@@ -43,6 +52,9 @@ const LikedVideos = () => {
                 <div className="video-description">
                     <img className="avatar-img" src={item.avatar} alt="avatar"/>
                   <h4 className="video-title">{item.videoTitle}</h4>
+                  <span>
+                  <i style={{color: "red", float: "right", padding: "10px", backgroundColor: "hsl(0deg 0% 20%)", borderRadius: "100%"}} className="far fa-trash-alt"></i>
+                  </span>
                   <p className="small-description">{item.channelName}</p>
                   <p className="small-level">Level: {item.level}</p>
                 </div>
@@ -52,12 +64,13 @@ const LikedVideos = () => {
         })}
         
       </div>
-      </main>
-      <h3 className="discover_home">Discover More</h3>
+      <br />
+      <br />
+      <h3 className="discover_more">Discover More</h3>
       <main
-        className="videos-list-showcase designVideoList"
+        className="videos-list-showcase-1 designVideoList"
       >
-        {allVideos.map((item) => {
+        {videos.map((item) => {
           return (
             <Link to={`/video/${item.id}`} className="video-item-link pointer">
               <div
@@ -65,7 +78,7 @@ const LikedVideos = () => {
                 key={item.id}
               >
                 <img
-                  style={{ width: "250px" }}
+                  style={{ width: "280px" }}
                   className="thumbnail-img"
                   src={item.thumbnail}
                   alt="thumbnail"
@@ -87,3 +100,4 @@ const LikedVideos = () => {
 }
 
 export default LikedVideos;
+

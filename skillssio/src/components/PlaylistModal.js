@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import addToPlayListHandler from "../utils/addToPlayListHandler"
 import { checkingItem } from "../utils/checkingItem";
 import { useParams } from "react-router";
+import Backdrop from "../utils/Backdrop/Backdrop";
 
 const UserPlaylists = ({videoDetails , playlist}) => {
     const {
@@ -20,7 +21,7 @@ const UserPlaylists = ({videoDetails , playlist}) => {
           id={playlist.listId}
           type="checkbox"
         />
-      <label style={{color: "black"}} htmlFor={playlist.listId}>{playlist.listName}</label>
+      <label className="playlistName-label" htmlFor={playlist.listId}>{playlist.listName}</label>
       </li>
       </>
     );
@@ -48,8 +49,8 @@ return (
       style={{display: display }}
     >
       <div className="playlistModal-header">
-        <h2>SAVE or ADD to Playlist</h2>
-        <p>save to watch later or add to a playlist</p>
+        <h2 className="playlistModal-head">SAVE or ADD to Playlist</h2>
+        <p className="playlistModal-description">save to watch later or add to a playlist or create a new one</p>
       </div>
       <div className="playlistModal-main">
           <div className="watchLater">
@@ -62,7 +63,7 @@ return (
           className="watchlater-checkbox"
           type="checkbox"
           />
-          <label style={{fontSize: "1.2rem" , fontWeight: "550"}}>watch later</label>
+          <label className="watchlaterLabel">watch later</label>
           </div>
          
         <ul className="playlist-checkbox">
@@ -107,7 +108,7 @@ return (
           className="close-btn"
           id="closeMe"
         >
-          Close
+          Cancel
         </button>
     &nbsp;
     &nbsp;
@@ -119,7 +120,5 @@ return (
     </div>
   );
 };
-
-
 
 export default PlaylistModal;

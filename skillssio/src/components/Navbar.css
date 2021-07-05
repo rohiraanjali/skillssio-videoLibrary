@@ -76,3 +76,11 @@ input#search-bar-home {
 .fa-times {
   font-size: 1.2rem;
 }
+.sigout-btn {
+  color: grey;
+  border: none;
+  background-color: hsl(0deg 0% 20%);
+  height: 40px;
+  padding: 0px 20px;
+
+}
