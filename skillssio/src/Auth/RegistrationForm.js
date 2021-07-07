@@ -70,11 +70,12 @@ const RegistrationForm = () => {
             setLoading(false)
           } catch (error) {
             setLoading(false)
-            const { status,data } = error.response;
+            console.log(error.message)
+            // const { status,data } = error.response;
 
-             if(status === 500){
-             setErrors(state => ({...state,email:data.message}) )
-             }
+            //  if(status === 500){
+            //  setErrors(state => ({...state,email:data.message}) )
+            //  }
           }
        }
     

@@ -33,7 +33,7 @@ export const AuthProvider = ({children}) => {
 
     const [state,dispatch] = useReducer(authReducer, JSON.parse(localStorage?.getItem('userInfo')) || {login: false, data: null})
     return (
-        <AuthContext.Provider value={{isUserLoggedIn: state.login, uid:state?.data?.uid, userDetails: state.data, dispatch,signout}}>
+        <AuthContext.Provider value={{isUserLoggedIn: state.login, uid:state?.data?._id, userDetails: state.data, dispatch,signout}}>
         {children}
         </AuthContext.Provider>
     )

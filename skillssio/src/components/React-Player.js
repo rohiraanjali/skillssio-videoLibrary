@@ -4,7 +4,6 @@ import {useParams} from "react-router-dom";
 import PlaylistModal from "./PlaylistModal"
 import ReactPlayer from "react-player";
 import { useVideo } from "../contexts/VideoContext";
-import { videos } from "../Database/allVideos";
 import { checkingItem } from "../utils/checkingItem";
 import {Link} from "react-router-dom";
 import "./React-Player.css";
@@ -12,46 +11,22 @@ import Navbar from "./Navbar";
 import Sidebar from "./sidebar";
 import Backdrop from "../utils/Backdrop/Backdrop";
 import axios from "axios";
+import { useAuth } from "../contexts/AuthContext";
 
  const VideoPlayer = () => {
   const [iconColor , setIconColor] = React.useState("grey")
   const[display , setDisplay] = React.useState("none")
 
    const { videoId  } = useParams();
+   const { uid } = useAuth()
   const {
-    state: { historyVideos , likedVideos },
+    state: { historyVideos,videos , likedVideos },
     dispatch
   } = useVideo();
   const [state, likeDispatch ] = useReducer(reducer, initialState);
   const { likes, dislikes, active } = state;
-  const videoDetails = videos.find((item) => item.id === videoId);
-
-
-  useEffect( () => {
-    window.scroll({top:0, behavior:'smooth'})
-    const videoDetails = videos.find((item) => item.id === videoId);
-
-    if(videoDetails){
-      setVideo(videoDetails)
-    }
-    else{
-      (async function(){
-        try {
-        const {data} = await axios.get(`http://localhost:5000/videos/${videoId}`);
-        setVideo(data.video)
-        } catch (error) {
-          console.log(error);
-        }
-      })()
-    }
-
-    return () => {
-      setVideo({avatar:"",channelName:"",level:"",thumbnail:"",videoTitle:"",history:[],watchLater:[],playLists:[]})
-    }
-  },[videoId,videos])
-
-  const [video,setVideo] = useState({avatar:"",channelName:"",level:"",thumbnail:"",videoTitle:"",history:[],watchLater:[],playLists:[]});
-
+  const videoDetails = videos.find((item) => item._id === videoId)
+console.log(videoDetails)
 
 const likeVideo = () => {
   if(active !== "like") {
@@ -60,6 +35,18 @@ const likeVideo = () => {
   }
   else {
     likeDispatch({type: HANDLE_DISLIKE})
+  }
+}
+
+const dispatchHistory = async() => {
+  if(!checkingItem(historyVideos, videoId) && uid !== undefined){
+    try {
+      await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
+      console.log("Api is geTTING CALLED")
+      dispatch({ type: "ADD_TO_HISTORY", payload: videoDetails })
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
   return (
@@ -72,20 +59,16 @@ const likeVideo = () => {
       <div className="player-div"> 
       <ReactPlayer
         className="react-player"
-        url={`https://www.youtube.com/watch?${videoId}`}
+        url={`https://www.youtube.com/watch?${videoDetails?.videoID}`}
         width="100%"
         height="300px"
         controls={true}
-        onStart={() =>
-             !checkingItem(historyVideos, videoId)
-            ? dispatch({ type: "ADD_TO_HISTORY", payload: videoDetails })
-            : null
-        }
+        onPlay={dispatchHistory}
       />
       <div className="player-control">
         <div className="video-description">
-        <p className="video-DisplayTitle">{videoDetails.videoTitle}</p>
-        <p className="video-views-date">1.4k views •  Nov 20, 2020 {videoDetails.date}</p>
+        <p className="video-DisplayTitle">{videoDetails?.videoTitle}</p>
+        <p className="video-views-date">1.4k views •  Nov 20, 2020 {videoDetails?.date}</p>
         </div>
         <div className="video-controls">
         <span className="flex items-center">
@@ -122,26 +105,26 @@ const likeVideo = () => {
       <div className="suggestion-div" style={{color: "white" ,marginBottom: "10px", fontSize: "1rem"}}>
       <span className="badge">All Videos</span>
         <br />
-      {videos.map((item) => {
+      {videos?.map((item) => {
           return (
-            <Link to={`/video/${item.id}`} className="video-item-link pointer">
+            <Link to={`/video/${item._id}`} className="video-item-link pointer">
               <div
                 className="video-item-playyerWrapper"
-                key={item.id}
+                key={item._id}
               >
                 <div className="video-thumbnail-wrapper">
                 <img
                   style={{ width: "160px", paddingRight:"10px"  }}
                   className="thumbnail-img-player"
-                  src={item.thumbnail}
+                  src={item?.thumbnail}
                   alt="thumbnail"
                 />
                 </div>
                 <div className="video-description-player">
-                  <div className="video-title-player">{item.videoTitle}</div>
+                  <div className="video-title-player">{item?.videoTitle}</div>
                   <br />
                 
-                  <small className="small-description-player">{item.channelName} • {item.level}</small>
+                  <small className="small-description-player">{item?.channelName} • {item?.level}</small>
                   <small className="small-description-player">4.5M views • 5 months ago </small>
                 </div>
               </div>

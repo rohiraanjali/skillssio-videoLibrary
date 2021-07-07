@@ -39,10 +39,10 @@ const HistoryVideos = () => {
       <div className= "filteredHistoryVideos">
         {filteredHistoryVideos.map((item) => {
           return (
-            <Link to={`/video/${item.id}`} className="video-item-link pointer">
+            <Link to={`/video/${item._id}`} className="video-item-link pointer">
               <div
                 className="video-item"
-                key={item.id}
+                key={item._id}
               >
                 <img
                   style={{ width: "280px" }}

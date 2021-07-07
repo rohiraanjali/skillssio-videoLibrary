@@ -4,10 +4,13 @@ import Navbar from "./Navbar"
 import React from "react";
 import { NavLink , Link } from "react-router-dom";
 import HomeImg from "./img1.png";
-import {videos} from "../Database/allVideos"
+// import {videos} from "../Database/allVideos"
 import { displayVideos } from "../Database/displayVideos";
 import searchIcon from "./search.svg";
+import { useVideo } from "../contexts/VideoContext";
 const Home = () => {
+  const {state} = useVideo()
+  const videos = state.videos;
     return (
 <div className="main_wrapper">
     <Sidebar />
@@ -50,6 +53,7 @@ const Home = () => {
         className="videos-list-showcase-1"
       >
         {displayVideos.map((item) => {
+          
           return (
             <Link to={`/video/${item.id}`} className="video-item-link pointer">
               <div
@@ -90,12 +94,12 @@ const Home = () => {
       <main
         className="videos-list-showcase-1 designVideoList"
       >
-        {videos.map((item) => {
+        {videos?.map((item) => {
           return (
-            <Link to={`/video/${item.id}`} className="video-item-link pointer">
+            <Link to={`/video/${item._id}`} className="video-item-link pointer">
               <div
                 className="video-item"
-                key={item.id}
+                key={item._id}
               >
                 <img
                   style={{ width: "280px" }}

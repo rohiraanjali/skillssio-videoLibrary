@@ -18,10 +18,10 @@
 /* sidebar */
 .main_wrapper {
   height: 3000px;
-    overflow: hidden;
-    background-color: var(--size-nav-background);
-    display: flex;
-    flex-direction: row;
+  overflow: hidden;
+  background-color: var(--size-nav-background);
+  display: flex;
+  flex-direction: row;
 }
 .home-wrapper__main {
   height: 2000px;

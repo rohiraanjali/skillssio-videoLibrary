@@ -35,19 +35,13 @@ const LoginForm = () => {
         }
     }
     const submitHandler = async(e) => {
-        e.preventDefault();
-
         try {
-            const config = {
-                headers: {
-                    "Content-type": "application/JSON"
-                },
-            };
+           
             setLoading(true)
             const {data} = await  axios.post("http://localhost:5000/users/login", 
             {
                 email, password
-            }, config
+            }
             );
 
             console.log(data)
@@ -71,7 +65,7 @@ return (
         <div className="loginContainer" >
         {Error && <ToastMessage style={{backgroundColor: "red"}}variant="danger">{Error}</ToastMessage>}
         <br />
-            <Form onSubmit={submitHandler}>
+            <Form onSubmit={(e)=>e.preventDefault()}>
             {loading && <Loading />}
             <div className="input-div">
                 <Form.Group controlId="formBasicEmail" >
@@ -105,7 +99,7 @@ return (
                 />
                 <span className="remember-span">Remember Me</span>
                 </Form.Group>
-                <Button variant="primary" className="submit-button" type="submit">
+                <Button variant="primary" className="submit-button" type="submit" onClick={submitHandler}>
                 LOG IN
                 </Button>
                 </div>
