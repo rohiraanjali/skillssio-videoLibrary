@@ -39,7 +39,7 @@ function App() {
       dispatch({type: "ADD_TO_LIKED_VIDEOS", payload: {data}})
       dispatch({type: "ADD_TO_LATER_VIDEOS", payload: {data}})
       dispatch({type: "ADD_TO_PLAYLISTS", payload: {data}})
-      console.log(data)
+      console.log("getting called")
     }) ()
   }, [uid])
   return (
