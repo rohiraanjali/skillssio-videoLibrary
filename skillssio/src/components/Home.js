@@ -22,7 +22,7 @@ const Home = () => {
          <br/>
          <h1 className="main__heading">SKILLS-LAB: Learn & Grow
          <span>with in-demand skills.</span></h1>
-         <img src={HomeImg} className="main__image" />
+         {/* <img src={HomeImg} className="main__image" /> */}
          <p className="main__para">Skills-Lab offers you free curated content from Top industry professionals to level up or build your skills-set from scratch and grow.  </p>
 
        <div className="btns_home">
@@ -84,13 +84,15 @@ const Home = () => {
       <div className="category-btns">
            <button className="btn-cat ">Programming</button>
           <button className="btn-cat design">Product Design</button>
+          <button className="btn-cat ">Graphic Design</button>
           <button className="btn-cat ">Video Editing</button>
           <button className="btn-cat">Copywriting</button>
           <button className="btn-cat">Marketing</button>
           <button className="btn-cat">Sales</button>
       </div>
-      <br/>
       <br />
+      <br />
+      
       <main
         className="videos-list-showcase-1 designVideoList"
       >

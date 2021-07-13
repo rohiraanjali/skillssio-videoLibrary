@@ -208,6 +208,8 @@
 .videos-list-showcase-1 {
   font-family: var(--font-fam);
   display: flex;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -452,11 +454,12 @@
     }
 
   .category-btns {
-    visibility: visible;
+  visibility: visible;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 2em;
+  padding: 20px;
   justify-items: center;
 }
 
