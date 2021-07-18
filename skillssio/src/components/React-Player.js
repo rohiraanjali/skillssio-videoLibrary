@@ -39,7 +39,9 @@ const likeVideo = () => {
 }
 
 const dispatchHistory = async() => {
-  if(!checkingItem(historyVideos, videoId) && uid !== undefined){
+  console.log(!checkingItem(historyVideos, videoId))
+  if(!checkingItem(historyVideos, videoId))
+  {
     try {
       await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
       console.log("Api is geTTING CALLED")
@@ -51,7 +53,7 @@ const dispatchHistory = async() => {
 }
   return (
     <>
-    <div className="main_wrapper">
+    <div className="main_wrapper_player">
       <Sidebar />
       <div className="home-wrapper__main">
        <Navbar />

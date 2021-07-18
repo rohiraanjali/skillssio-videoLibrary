@@ -17,7 +17,14 @@
 }
 /* sidebar */
 .main_wrapper {
-  height: 3000px;
+  height: 9200px;
+  overflow: hidden;
+  background-color: var(--size-nav-background);
+  display: flex;
+  flex-direction: row;
+}
+.main_wrapper_player {
+  height: 3200px;
   overflow: hidden;
   background-color: var(--size-nav-background);
   display: flex;
@@ -59,7 +66,7 @@
     text-decoration: none;
   }
   .home-wrapper {
-    height: 100%;
+   
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -218,10 +225,9 @@
   text-decoration: none;
 }
 .video-item {
-  text-align: left;
   padding: 0.5rem;
   color: white;
-  width:300px;
+  width:100%;
 }
 .video-item:hover {
   box-shadow: 0 0 5px 3px grey;
@@ -270,25 +276,34 @@
   text-align: left;
 }
 .category-btns {
-  visibility: hidden;
-  /* width: 100%;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 2em;
-  padding: 0rem 2rem 0rem 2rem;
-  justify-items: center; */
+  display: none;
 }
+/* yeh dekho */
 
 .empty-state {
   color: whitesmoke;
   text-align: center;
   padding: 2rem;
 }
+
+.design {
+  box-shadow: none;
+}
 .btn-cat {
-  display: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: hsl(0deg 0% 20%);
+  border: none;
+  box-shadow: 0 0 5px 3px grey;
+  color: white;
+  border-radius: 6px;
+}
+.btn-cat {
+  /* display: none; */
 }
 .designVideoList, .btn-cat, .category-btns {
-  display: none;
+  /* display: none; */
 }
   .filteredHistoryVideos, .playlistVideos, .filteredLikedVideos, .filteredLaterVideos {
     font-family: var(--font-fam);
@@ -323,11 +338,26 @@
   }
 }
   @media screen and (min-width: 550px) and (max-width: 1023px){
+   
     .discover_more {
       color: whitesmoke;
       font-size: 1.2rem;
       padding: 0rem 0rem 0rem 2rem;
       font-family: var(--font-fam-2);
+    }
+    
+.category-btns {
+  visibility: visible;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 2em;
+  padding: 0rem 2rem 0rem 2rem;
+  justify-items: center;
+}
+
+    .btn-cat:hover {
+    box-shadow: none;
     }
     .play_icon_wrapper_mobile {
       display: none;
@@ -395,9 +425,28 @@
   }
   /* search bar */
   @media screen and (min-width: 1024px) {
-    .play_icon_wrapper_mobile {
+  .play_icon_wrapper_mobile {
   display: none;
 }
+.category-btns {
+  visibility: visible;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 2em;
+  padding: 0rem 2rem 0rem 2rem;
+  justify-items: center;
+}
+/* .category-btns {
+  visibility: visible;
+  width: 100%;
+  display: flex;
+  grid-template-columns: repeat(7, 1fr); 
+  grid-gap: 2em;
+  padding: 20px;
+  justify-content: space-between;
+} */
+
 .filteredHistoryVideos, .playlistVideos, .filteredLikedVideos, .filteredLaterVideos {
   font-family: var(--font-fam);
   display: grid;
@@ -452,42 +501,48 @@
     .list-item-heading {
       display: block;
     }
-
-  .category-btns {
-  visibility: visible;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 2em;
-  padding: 20px;
-  justify-items: center;
-}
-
-.btn-cat {
-  display: block;
-  padding: 10px;
-  background-color: hsl(0deg 0% 20%);
-  border: none;
-  box-shadow: 0 0 5px 3px grey;
-  color: white;
-  border-radius: 6px;
-}
-.btn-cat:hover {
-  box-shadow: none;
-}
-.design {
-  box-shadow: none;
-}
-.designVideoList {
+/* .designVideoList {
   font-family: var(--font-fam);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-}
+  grid-template-columns:auto auto auto auto;
+  place-items: center;
+} */
 .filteredHistoryVideos, .playlistVideos, .filteredLikedVideos, .filteredLaterVideos {
   font-family: var(--font-fam);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
 }
+  } 
+
+
+  @media screen and (min-width:1400px) {
+    .designVideoList {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
+
+  @media screen and (max-width:1400px) {
+    .designVideoList {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width:1200px) {
+    .designVideoList {
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width:600px) {
+    .designVideoList {
+      display:grid;
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
+  

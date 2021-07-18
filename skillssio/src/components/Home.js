@@ -22,7 +22,7 @@ const Home = () => {
          <br/>
          <h1 className="main__heading">SKILLS-LAB: Learn & Grow
          <span>with in-demand skills.</span></h1>
-         {/* <img src={HomeImg} className="main__image" /> */}
+         <img src={HomeImg} className="main__image" />
          <p className="main__para">Skills-Lab offers you free curated content from Top industry professionals to level up or build your skills-set from scratch and grow.  </p>
 
        <div className="btns_home">
@@ -48,8 +48,8 @@ const Home = () => {
            </span>
        </div>
     
-       <h3 className="discover_home">Discover More</h3>
-       <main
+       {/* <h3 className="discover_home">Discover More</h3> */}
+       {/* <main
         className="videos-list-showcase-1"
       >
         {displayVideos.map((item) => {
@@ -78,9 +78,8 @@ const Home = () => {
             
           );
         })}
-      </main>
-      <br />
-      <br />
+      </main> */}
+     
       <div className="category-btns">
            <button className="btn-cat ">Programming</button>
           <button className="btn-cat design">Product Design</button>
@@ -94,7 +93,7 @@ const Home = () => {
       <br />
       
       <main
-        className="videos-list-showcase-1 designVideoList"
+        className="designVideoList"
       >
         {videos?.map((item) => {
           return (
@@ -104,7 +103,7 @@ const Home = () => {
                 key={item._id}
               >
                 <img
-                  style={{ width: "280px" }}
+                  style={{ width: "100%" }}
                   className="thumbnail-img"
                   src={item.thumbnail}
                   alt="thumbnail"
