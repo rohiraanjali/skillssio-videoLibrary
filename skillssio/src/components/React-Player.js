@@ -39,17 +39,12 @@ const likeVideo = () => {
 }
 
 const dispatchHistory = async() => {
-  console.log(!checkingItem(historyVideos, videoId))
-  if(!checkingItem(historyVideos, videoId))
-  {
     try {
       await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
-      console.log("Api is geTTING CALLED")
       dispatch({ type: "ADD_TO_HISTORY", payload: videoDetails })
     } catch (error) {
       console.log(error);
     }
-  }
 }
   return (
     <>
