@@ -40,6 +40,7 @@ const likeVideo = () => {
 
 const dispatchHistory = async() => {
     try {
+      
       await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
       dispatch({ type: "ADD_TO_HISTORY", payload: videoDetails })
     } catch (error) {
