@@ -13,36 +13,32 @@ import Backdrop from "../utils/Backdrop/Backdrop";
 import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 
- const VideoPlayer = () => {
+  const VideoPlayer = () => {
   const [iconColor , setIconColor] = React.useState("grey")
   const[display , setDisplay] = React.useState("none")
 
-   const { videoId  } = useParams();
-   const { uid } = useAuth()
+  const { videoId  } = useParams();
+  const { uid } = useAuth()
   const {
-    state: { historyVideos,videos , likedVideos },
+    state: { history,videos , likedVideos, playlists },
     dispatch
   } = useVideo();
   const [state, likeDispatch ] = useReducer(reducer, initialState);
   const { likes, dislikes, active } = state;
   const videoDetails = videos.find((item) => item._id === videoId)
-console.log(videoDetails)
 
-const likeVideo = () => {
-  if(active !== "like") {
-    likeDispatch({type: HANDLE_LIKE})
-    dispatch({ type: "ADD_TO_LIKED_VIDEOS", payload: videoDetails})
-  }
-  else {
-    likeDispatch({type: HANDLE_DISLIKE})
-  }
+  const likeVideo = async() => {
+    try {
+      const {data} =  await axios.post(`http://localhost:5000/likedVideos/${uid}/${videoId}`)
+      dispatch({ type: "UPDATE_LIKEDVIDEOS", payload: {data:data.likedVideos} })
+    } catch (error) {
+      console.log(error);
+    }
 }
-
 const dispatchHistory = async() => {
     try {
-      
-      await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
-      dispatch({ type: "ADD_TO_HISTORY", payload: videoDetails })
+      const {data} =  await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
+      dispatch({ type: "UPDATE_HISTORY", payload: {data:data.history} })
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +48,7 @@ const dispatchHistory = async() => {
     <div className="main_wrapper_player">
       <Sidebar />
       <div className="home-wrapper__main">
-       <Navbar />
+      <Navbar />
       <div className="player-wrapper">
       <div className="player-div"> 
       <ReactPlayer
@@ -70,14 +66,15 @@ const dispatchHistory = async() => {
         </div>
         <div className="video-controls">
         <span className="flex items-center">
-        <i style={{ color: active === "like" ? "white" : "grey" }}
+        <i 
+        style={{ color: active === "like" ? "white" : "grey" }}
         onClick={likeVideo}
       className="fa fa-thumbs-up"></i>
         <p className="like-counter">{likes}</p>
         </span>
         <span className="flex items-center">
         <i style={{ color: active === "dislike" ? "white" : "grey" }}
-         onClick={likeVideo}
+        onClick={likeVideo}
         className="fa fa-thumbs-down"></i>
         <p className="like-counter">{dislikes}</p>
         </span>
@@ -91,7 +88,7 @@ const dispatchHistory = async() => {
       </div>
       <hr style={{width: "100%" , backgroundColor: "grey" , height: "0" , opacity: "0.2"}}/>
       <div className="playlist" style={{display: display}}>
-     <Backdrop show={display}>
+    <Backdrop show={display}>
       <PlaylistModal 
       setDisplay={setDisplay}
       videoDetails={videoDetails}
@@ -99,7 +96,7 @@ const dispatchHistory = async() => {
       </Backdrop>
       </div>
       </div>
-     
+  
       <div className="suggestion-div" style={{color: "white" ,marginBottom: "10px", fontSize: "1rem"}}>
       <span className="badge">All Videos</span>
         <br />

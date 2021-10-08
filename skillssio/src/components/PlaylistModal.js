@@ -1,47 +1,91 @@
 import React from "react";
-import {useVideo} from "../contexts/VideoContext";
+import {useAuth} from "../contexts/AuthContext";
+import { useVideo } from "../contexts/VideoContext";
 import { v4 as uuidv4 } from 'uuid';
-import addToPlayListHandler from "../utils/addToPlayListHandler"
-import { checkingItem } from "../utils/checkingItem";
 import { useParams } from "react-router";
-import Backdrop from "../utils/Backdrop/Backdrop";
-
-const UserPlaylists = ({videoDetails , playlist}) => {
-    const {
-        state: { playlists }
-        , dispatch
-    } = useVideo();
-    return (
-        <>
-        <li>
-        <input
-          onChange={() =>
-            addToPlayListHandler(playlists, dispatch, playlist, videoDetails)
-          }
-          id={playlist.listId}
-          type="checkbox"
-        />
-      <label className="playlistName-label" htmlFor={playlist.listId}>{playlist.listName}</label>
-      </li>
-      </>
-    );
-  };
+import axios from "axios"
 
 const PlaylistModal = ({setDisplay , display , videoDetails}) => {
-const [playListName , setPlayListName] = React.useState("");
+  const [playlistName, setPlaylistName] = React.useState("");
 
 const {videoId} = useParams();
 const {
-    state: { playlists , laterVideos } , dispatch
+    state: { playlists , watchLater, videos } , dispatch
   } = useVideo();
+   const { uid } = useAuth()
+   const video = videos.find(v => v._id === videoId)
 
- function createNewPlaylist(playListName) {
-    playlists.push({
-        listName: playListName,
-        listId: uuidv4(),
-        listVideos: []
-    })
-    setPlayListName(" ");
+const addVideoToPlaylist = async(videoId,playlistId,playlistIndex,toast) => {
+  try {
+      if( playlists[playlistIndex].videos.find( v => v._id === videoId)) {
+          const {status,data} = await axios.delete(`http://localhost:5000/playlists/${uid}/${playlistId}/${videoId}`);
+          // if(status === 200){
+          //      dispatch({type:"REMOVE_FROM_PLAYLIST",payload:data.playlists});
+          // }
+        return;
+      };
+
+      const {status,data} = await axios.post(`http://localhost:5000/playlists/${uid}/${playlistId}/${videoId}`);
+      if(status === 200){
+        dispatch({ type: "ADD_TO_PLAYLIST", payload: {data:data.playlists} })
+        console.log(data)      
+          }
+  } catch (error) {
+      // toast(true);
+      setTimeout( () => {
+          // toast(false);
+      },2000)
+  }
+  
+}
+
+const createPlaylist = async(name) => {
+  try {
+      const {data} = await axios.post(`http://localhost:5000/playlists/${uid}`,{name});
+      console.log(data)
+      dispatch({ type: "CREATE_PLAYLIST", payload: {data:data.playlists} })
+  } catch (error) {
+      setTimeout(() => {
+        console.log("can't create playlist")
+      },2000)
+  }
+}
+
+
+const removePlaylist = async(playlistId) => {
+  try {
+      const {status,data} = await axios.delete(`http://localhost:5000/playlists/${uid}/${playlistId}`);
+      if(status === 200){
+          dispatch({type:"REMOVE_PLAYLIST",data:data.playlists});
+      }
+  } catch (error) {
+      // toast(true);
+      setTimeout( () => {
+          // toast(false);
+      },2000)
+  }
+}
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(playlistName !== "") {
+        createPlaylist(playlistName);
+        setPlaylistName("");
+   
+    }
+    else{
+console.log("error hai yarr")
+    }
+}
+
+const dispatchWatchLater = async() => {
+  try {
+    const {data} =  await axios.post(`http://localhost:5000/watchLater/${uid}/${videoId}`)
+    dispatch({ type: "UPDATE_WATCHLATER", payload: {data:data.watchLater} })
+  } catch (error) {
+    console.log(error);
+  }
 }
 return (
     <div
@@ -55,43 +99,33 @@ return (
       <div className="playlistModal-main">
           <div className="watchLater">
           <input 
-           onChange={() =>
-            !checkingItem(laterVideos, videoId)
-              ? dispatch({ type: "ADD_TO_LATER_VIDEOS", payload: videoDetails })
-              : null
-          } 
+          onChange={dispatchWatchLater} 
           className="watchlater-checkbox"
           type="checkbox"
           />
           <label className="watchlaterLabel">watch later</label>
           </div>
-         
-        <ul className="playlist-checkbox">
-          {playlists.map((playlist) => {
-            return (
-              <UserPlaylists
-                playlist={playlist}
-                videoDetails={videoDetails}
-                key={playlist.listId}
-              />
-            );
-          })}
-        </ul>
+          {playlists.map( (list,index) => (
+                        <div className="modal__content__item" key={list._id}>
+                          <input type="checkbox" defaultChecked={list.videos.find(v => v._id === videoId)} onChange={() => addVideoToPlaylist(video._id,list._id,index)} style={{cursor:"pointer"}}/>
+                          <label><small style={{color: "white"}}>{list.name}</small></label>
+                        </div>
+                        ) )}
+        
         <div className="playlistModal-input"
           style={{display: !display}}
         >
           <input
           className="playlistModal-inputBox"
-            value={playListName}
-            onChange={(e) => setPlayListName(e.target.value)}
+            value={playlistName}
+            onChange={(e) => setPlaylistName(e.target.value)}
             type="text"
             placeholder="Add new playlist"
           />
 
           &nbsp;
           <button
-            disabled={playListName === ""}
-            onClick={() => createNewPlaylist(playListName)}
+            onClick={handleSubmit}
             className="plus-btn"
           >
         <i class="fa fa-plus" aria-hidden="true"></i>

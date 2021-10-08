@@ -7,10 +7,9 @@
 
 .home-wrapper__main {
     width: 100%;
-    height: 4000px;
-    /* height: 800px; */
     background: hsl(0deg 0% 13%);
 }
+
 
   .search-category-btns {
     width: 100%;
@@ -55,6 +54,5 @@
     .search-category-btns {
         grid-template-columns: repeat(3, 1fr);
       }
-
 }
   

@@ -17,21 +17,20 @@
 }
 /* sidebar */
 .main_wrapper {
-  height: 9200px;
   overflow: hidden;
   background-color: var(--size-nav-background);
   display: flex;
   flex-direction: row;
 }
+
 .main_wrapper_player {
-  height: 3200px;
   overflow: hidden;
   background-color: var(--size-nav-background);
   display: flex;
   flex-direction: row;
 }
 .home-wrapper__main {
-  height: 2000px;
+  /* height: 2000px; */
   background: hsl(0deg 0% 13%);
 }
 .home-wrapper-mobile {
@@ -57,7 +56,6 @@
   }
 
   .home-wrapper {
-    height: 1000px;
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -202,9 +200,9 @@
   border-radius: 25px; */
 /* } */
 
-.discover_more {
+/* .discover_more {
   display: none;
-}
+} */
 .discover_home {
   color: whitesmoke;
   font-size: 1.2rem;
@@ -245,12 +243,13 @@
 .small-description,
 .small-level {
   position: relative;
-  left: 42px;
+  left: 46px;
   bottom: 5px;
   color: grey;
   font-size: 0.8rem;
   font-weight: 100;
 }
+
 
 .small-level {
   color: grey;
@@ -304,6 +303,9 @@
 }
 .designVideoList, .btn-cat, .category-btns {
   /* display: none; */
+}
+.historydesignVideoList {
+  display: none;
 }
   .filteredHistoryVideos, .playlistVideos, .filteredLikedVideos, .filteredLaterVideos {
     font-family: var(--font-fam);

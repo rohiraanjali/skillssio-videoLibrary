@@ -19,52 +19,53 @@ const Sidebar = () => {
       window.addEventListener("resize", updateMedia);
       return () => window.removeEventListener("resize", updateMedia);
     });
+    
     return (
         <>
         <div className="home-wrapper"> 
     
     {isDesktop ? <aside className="home-wrapper__aside">
     <img className="player-logo" src={playerLogo} style={{width: "55%"}}/>
-         <br />
-       <ul className="home-wrapper__aside__list">
-         <NavLink to="/" className="side-nav-link">
-             <div className="list-item-heading">Browse videos</div>
-           <li className="pointer">
-           <div className="bg-pointer" style={{ width: "225px", marginLeft: "8px" , padding: "8px" , textAlign: "left"}}>
-             <i className="fas fa-home pointer"></i>
-             <span className="list-item-title">Home</span>
-             </div>
-           </li>
-         </NavLink>
+        <br />
+      <ul className="home-wrapper__aside__list">
+        <NavLink to="/" className="side-nav-link">
+            <div className="list-item-heading">Browse videos</div>
+          <li className="pointer">
+          <div className="bg-pointer" style={{ width: "225px", marginLeft: "8px" , padding: "8px" , textAlign: "left"}}>
+            <i className="fas fa-home pointer"></i>
+            <span className="list-item-title">Home</span>
+            </div>
+          </li>
+        </NavLink>
 
-         <NavLink to="/search" className="side-nav-link">
-             <li className="pointer">
-             <div className="bg-pointer" style={{ width: "220px", marginLeft: "8px" , padding: "10px" , textAlign: "left"}}>
-             <i className="fas fa-search" aria-hidden="true"></i>
-               <span className="list-item-title">Explore</span>
-               </div>
-             </li>
-           </NavLink>
+        <NavLink to="/search" className="side-nav-link">
+            <li className="pointer">
+            <div className="bg-pointer" style={{ width: "220px", marginLeft: "8px" , padding: "10px" , textAlign: "left"}}>
+            <i className="fas fa-search" aria-hidden="true"></i>
+              <span className="list-item-title">Explore</span>
+              </div>
+            </li>
+          </NavLink>
 
-           <br />
-         <NavLink to="/history" className="side-nav-link">
-             <div className="list-item-heading">Your Videos</div>
-           <li className="pointer">
-           <div className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
-             <i className="fas fa-history pointer"></i>
-             <span className="list-item-title">History</span>
-             </div>
-           </li>
-         </NavLink>
+          <br />
+        <NavLink to="/history" className="side-nav-link">
+            <div className="list-item-heading">Your Videos</div>
+          <li className="pointer">
+          <div className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
+            <i className="fas fa-history pointer"></i>
+            <span className="list-item-title">History</span>
+            </div>
+          </li>
+        </NavLink>
 
-         <NavLink to="/watchLaterVideos" className="side-nav-link">
-           <li className="pointer">
-           <div  className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
-             <i class="fas fa-clock pointer"></i>
-             <span className="list-item-title">Watch later</span>
-             </div>
-           </li>
-         </NavLink>
+        <NavLink to="/watchLaterVideos" className="side-nav-link">
+          <li className="pointer">
+          <div  className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
+            <i class="fas fa-clock pointer"></i>
+            <span className="list-item-title">Watch later</span>
+            </div>
+          </li>
+        </NavLink>
 
          <NavLink to="/likedVideos" className="side-nav-link">
            <li className="pointer">
@@ -75,7 +76,7 @@ const Sidebar = () => {
            </li>
          </NavLink>
          <br />
-         <NavLink to="/playlist" className="side-nav-link">
+         <NavLink to="/playlists" className="side-nav-link">
              <div className="list-item-heading">Your Playlist</div>
            <li className="pointer">
            <div className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
@@ -123,7 +124,7 @@ const Sidebar = () => {
             </li>
           </NavLink>
          
-          <NavLink to="/playlist" className="side-nav-link">
+          <NavLink to="/playlists" className="side-nav-link">
             <li className="pointer-mobile">
             <i className="fas fa-list pointer"></i>
             </li>

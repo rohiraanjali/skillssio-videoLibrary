@@ -3,52 +3,27 @@ import { createContext, useContext, useReducer } from "react";
 export const VideoContext = createContext();
 
 export const VideoProvider = ({ children }) => {
+  
   const VideoReducer = (state, action) => {
     switch (action.type) {
-      case "ADD_TO_HISTORY": {
-        return {
-          ...state,
-          historyVideos: [
-            ...state.historyVideos,
-            { ...action.payload, existsInHistory: true }
-          ]
-        };
-      }
-
-      case "ADD_TO_LIKED_VIDEOS": {
-        return {
-          ...state,
-          likedVideos: [
-            ...state.likedVideos,
-            { ...action.payload, existsInLikedVideos: true }
-          ]
-        };
-      }
-      case "ADD_TO_LATER_VIDEOS": {
-        return {
-          ...state,
-          laterVideos: [
-            ...state.laterVideos,
-            { ...action.payload, existsInLaterVideos: true }
-          ]
-        };
-      }
-      case "ADD_TO_PLAYLISTS": {
-        console.log("action payload is" , action.payload)
-        const result = state.playlists.map((list) => {
-          if (list.listId === action.payload.playlist.listId) {
-            return {
-              ...list,
-              listVideos: [
-                ...list.listVideos ,
-                { ...action.payload.videoDetails }
-              ]
-            };
-          }
-          return list;
-        });
-        return { ...state, playlists: [...result] };
-      }
+    case "UPDATE_HISTORY":{
+      return {...state,history:action.payload.data}
+    }
+    case "UPDATE_WATCHLATER":{
+      return {...state,watchLater:action.payload.data}
+    }
+    case "UPDATE_LIKEDVIDEOS":{
+      return {...state,likedVideos:action.payload.data}
+    }
+    case "CREATE_PLAYLIST":{
+      return {...state,playlists:action.payload.data}
+    }
+    case "ADD_TO_PLAYLIST":{
+      return {...state,playlists:action.payload.data}
+    }
+    case "UPDATE_DATA":{
+      return {...state,...action.payload.data}
+    }
       case "UPDATE_VIDEOS": {
         return {...state, videos: action.payload.data}
       }
@@ -56,17 +31,17 @@ export const VideoProvider = ({ children }) => {
         return state;
     }
   };
-
-  
   const initialState = {
-    historyVideos: [],
+    history: [],
     likedVideos: [],
     playlists: [],
-    laterVideos: [],
+    watchLater: [],
     videos:[]
   }
   const [state, dispatch] = useReducer(VideoReducer, initialState);
+
   console.log(state)
+
   return (
     <div>
       <VideoContext.Provider value={{ state, dispatch }}>
