@@ -63,7 +63,7 @@ const RegistrationForm = () => {
               setTimeout( () => {
                 setToast("");
               },2000) 
-
+              
               setState({name:"",email:"",password:"", confirmPassword: ""})
             }
 
@@ -83,7 +83,7 @@ const RegistrationForm = () => {
     return (
       <MainScreen title="Signup to continue">
       <div className="loginContainer">
-      {toast && <ToastMessage style={{backgroundColor: "red"}}variant="danger">{toast}</ToastMessage>}
+      {toast && <ToastMessage style={{backgroundColor: "green"}}variant="info">{toast}</ToastMessage>}
       {loading && <Loading />}
       <form onSubmit={handleSubmit}>
       

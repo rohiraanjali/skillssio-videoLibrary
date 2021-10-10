@@ -1,5 +1,4 @@
-
-    .player-wrapper {
+.player-wrapper {
         overflow: initial;
         width: auto;
         background-color: var(--background-main);
@@ -254,5 +253,4 @@
           .add-btn{
            width: 50%;
           }
-          
           }

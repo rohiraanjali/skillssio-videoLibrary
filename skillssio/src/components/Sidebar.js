@@ -1,8 +1,8 @@
 import { NavLink , Link} from "react-router-dom";
-import playerLogo from "./video-logo1.png";
+import playerLogo from "../Assets/Images/video-logo1.png";
 import React from "react";
 import {useVideo} from "../contexts/VideoContext"
-import videoPlayer from "./React-Player"
+import videoPlayer from "../Pages/VideoPlayer/React-Player"
 
 import "./Home.css"
 const Sidebar = () => {

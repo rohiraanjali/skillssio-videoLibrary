@@ -4,11 +4,11 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import {Routes , Route} from "react-router-dom";
 import HistoryVideos from './Pages/History/History';
-import VideoPlayer from "./components/React-Player";
+import VideoPlayer from "./Pages/VideoPlayer/React-Player";
 import LikedVideos from "./Pages/LikedVideos/LikedVideos";
 import WatchLater from "./Pages/WatchLater/WatchLater"
 import Playlist from './Pages/Playlist/Playlists';
-import SearchPage from './components/SearchPage';
+import SearchPage from './Pages/Search/SearchPage';
 import LoginForm from './Auth/LoginForm';
 import RegistrationForm from "./Auth/RegistrationForm"
 import PrivateRoute from "./utils/PrivateRoute";
@@ -49,9 +49,9 @@ function App() {
       </Route>
       <Route path="/video/:videoId" element={<VideoPlayer />} />
       <PrivateRoute path="/history" element={<HistoryVideos />} />
-      <Route path="/likedVideos" element={<LikedVideos />} />
-      <Route path="/playlists" element={<Playlist />} />
-      <Route path="/watchLaterVideos" element={<WatchLater />} />
+      <PrivateRoute path="/likedVideos" element={<LikedVideos />} />
+      <PrivateRoute path="/playlists" element={<Playlist />} />
+      <PrivateRoute path="/watchLaterVideos" element={<WatchLater />} />
       <Route path="/search" element={<SearchPage />} />
       </Routes>
     </div>

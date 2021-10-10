@@ -1,6 +1,6 @@
 import React from "react";
 import "./Auth.css"
-import siteLogo from "../components/video-logo1.png"
+import siteLogo from "../Assets/Images/video-logo1.png"
 import { Container, Row } from "react-bootstrap";
 
 function MainScreen({ children, title }) {

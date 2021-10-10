@@ -1,17 +1,17 @@
 import React, { useReducer , useEffect , useState} from "react";
-import { reducer, initialState, HANDLE_LIKE, HANDLE_DISLIKE } from "./LikeReducer";
+import { reducer, initialState, HANDLE_LIKE, HANDLE_DISLIKE } from "../../components/LikeReducer";
 import {useParams} from "react-router-dom";
-import PlaylistModal from "./PlaylistModal"
+import PlaylistModal from "../../components/PlaylistModal"
 import ReactPlayer from "react-player";
-import { useVideo } from "../contexts/VideoContext";
-import { checkingItem } from "../utils/checkingItem";
+import { useVideo } from "../../contexts/VideoContext";
+import { checkingItem } from "../../utils/checkingItem";
 import {Link} from "react-router-dom";
 import "./React-Player.css";
-import Navbar from "./Navbar";
-import Sidebar from "./sidebar";
-import Backdrop from "../utils/Backdrop/Backdrop";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/sidebar";
+import Backdrop from "../../utils/Backdrop/Backdrop";
 import axios from "axios";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
   const VideoPlayer = () => {
   const [iconColor , setIconColor] = React.useState("grey")

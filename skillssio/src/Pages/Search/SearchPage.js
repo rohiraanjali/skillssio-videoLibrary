@@ -1,13 +1,13 @@
 
 import "./SearchPage.css"
-import Navbar from "./Navbar";
-import Sidebar from "./sidebar";
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/sidebar";
 
 const SearchPage = () => {
     return (
 <div className="main_wrapper">
     <Sidebar />
-     <div className="home-wrapper__main">
+     <div className="home-wrapper__search">
        <Navbar /> 
       <br />
       <br />

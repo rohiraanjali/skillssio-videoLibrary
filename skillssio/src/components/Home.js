@@ -3,7 +3,7 @@ import Sidebar from "./sidebar";
 import Navbar from "./Navbar"
 import React from "react";
 import { NavLink , Link } from "react-router-dom";
-import HomeImg from "./img1.png";
+import HomeImg from "../Assets/Images/img1.png";
 import searchIcon from "./search.svg";
 import { useVideo } from "../contexts/VideoContext";
 const Home = () => {

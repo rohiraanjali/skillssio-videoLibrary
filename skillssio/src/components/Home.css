@@ -16,21 +16,18 @@
   display: none;
 }
 /* sidebar */
-.main_wrapper {
-  overflow: hidden;
-  background-color: var(--size-nav-background);
-  display: flex;
-  flex-direction: row;
-}
+
+
 
 .main_wrapper_player {
   overflow: hidden;
+  height: 100%;
   background-color: var(--size-nav-background);
   display: flex;
   flex-direction: row;
 }
 .home-wrapper__main {
-  /* height: 2000px; */
+  width: 100%;
   background: hsl(0deg 0% 13%);
 }
 .home-wrapper-mobile {

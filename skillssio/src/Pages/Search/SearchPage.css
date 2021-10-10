@@ -1,3 +1,4 @@
+
 .main_wrapper {
     overflow-x: hidden;
     background-color: var(--size-nav-background);
@@ -5,9 +6,11 @@
     flex-direction: row;
 }
 
-.home-wrapper__main {
+.home-wrapper__search {
+  overflow: hidden;
     width: 100%;
     background: hsl(0deg 0% 13%);
+    height: 900px;
 }
 
 
