@@ -1,13 +1,12 @@
-import React, { useReducer , useEffect , useState} from "react";
-import { reducer, initialState, HANDLE_LIKE, HANDLE_DISLIKE } from "../../components/LikeReducer";
+import React, { useReducer } from "react";
+import { reducer, initialState } from "../../components/LikeReducer";
 import {useParams} from "react-router-dom";
 import PlaylistModal from "../../components/PlaylistModal"
 import ReactPlayer from "react-player";
 import { useVideo } from "../../contexts/VideoContext";
-import { checkingItem } from "../../utils/checkingItem";
 import {Link} from "react-router-dom";
 import "./React-Player.css";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/sidebar";
 import Backdrop from "../../utils/Backdrop/Backdrop";
 import axios from "axios";
@@ -25,15 +24,29 @@ import { useAuth } from "../../contexts/AuthContext";
   } = useVideo();
   const [state, likeDispatch ] = useReducer(reducer, initialState);
   const { likes, dislikes, active } = state;
+  const [isWhite, setIsWhite] = React.useState(false)
+  const [isDislike, setIsDislike] = React.useState(false)
+
+
   const videoDetails = videos.find((item) => item._id === videoId)
 
   const likeVideo = async() => {
     try {
       const {data} =  await axios.post(`http://localhost:5000/likedVideos/${uid}/${videoId}`)
       dispatch({ type: "UPDATE_LIKEDVIDEOS", payload: {data:data.likedVideos} })
+      
     } catch (error) {
       console.log(error);
     }
+}
+const removeLikeVideos = async(videoId) => {
+  try {
+    const {data} =  await axios.delete(`http://localhost:5000/likedVideos/${uid}/${videoId}`)
+    dispatch({ type: "UPDATE_LIKEDVIDEOS", payload: {data:data.likedVideos} })
+    console.log("deleted")
+  } catch (error) {
+    console.log(error);
+  }
 }
 const dispatchHistory = async() => {
     try {
@@ -43,6 +56,7 @@ const dispatchHistory = async() => {
       console.log(error);
     }
 }
+
   return (
     <>
     <div className="main_wrapper_player">
@@ -66,17 +80,25 @@ const dispatchHistory = async() => {
         </div>
         <div className="video-controls">
         <span className="flex items-center">
-        <i 
-        style={{ color: active === "like" ? "white" : "grey" }}
-        onClick={likeVideo}
+        <button
+        style={{ padding: 8, background: 'transparent', border: 0 }}
+        onClick={() => setIsWhite(!isWhite)}>
+        <i style={{color: isWhite ? "white" : "grey"}}
+        onClick={isWhite ? likeVideo : removeLikeVideos}
       className="fa fa-thumbs-up"></i>
-        <p className="like-counter">{likes}</p>
+      </button>
+        <p className="like-counter">{isWhite ? 101 : 100}</p>
         </span>
         <span className="flex items-center">
-        <i style={{ color: active === "dislike" ? "white" : "grey" }}
-        onClick={likeVideo}
+        <button
+        style={{ padding: 8, background: 'transparent', border: 0 }}
+        onClick={() => setIsDislike(!isDislike)}
+      >
+        <i style={{color: isDislike ? "white" : "grey"}}
+        onClick={removeLikeVideos}
         className="fa fa-thumbs-down"></i>
-        <p className="like-counter">{dislikes}</p>
+        </button>
+        <p className="like-counter">{isDislike ? 13 : 12}</p>
         </span>
         <span className="flex items-center">
         <svg 

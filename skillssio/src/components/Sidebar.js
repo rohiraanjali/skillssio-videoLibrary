@@ -67,37 +67,37 @@ const Sidebar = () => {
           </li>
         </NavLink>
 
-         <NavLink to="/likedVideos" className="side-nav-link">
-           <li className="pointer">
-           <div  className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
-             <i class="fas fa-thumbs-up pointer"></i>
-             <span className="list-item-title">Liked videos</span>
-             </div>
-           </li>
-         </NavLink>
-         <br />
-         <NavLink to="/playlists" className="side-nav-link">
-             <div className="list-item-heading">Your Playlist</div>
-           <li className="pointer">
-           <div className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
-           <i className="fas fa-list pointer"></i>
-             <span className="list-item-title">New Playlist</span>
-             </div>
-           </li>
-           <li className="pointer">
-         <div>
-         {playlists.map((playlist) => {
+        <NavLink to="/likedVideos" className="side-nav-link">
+          <li className="pointer">
+          <div  className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
+            <i class="fas fa-thumbs-up pointer"></i>
+            <span className="list-item-title">Liked videos</span>
+            </div>
+          </li>
+        </NavLink>
+        <br />
+        <NavLink to="/playlists" className="side-nav-link">
+            <div className="list-item-heading">Your Playlist</div>
+          <li className="pointer">
+          <div className="bg-pointer" style={{width: "220px",marginLeft: "8px", padding: "10px" , textAlign: "left"}}>
+          <i className="fas fa-list pointer"></i>
+            <span className="list-item-title">View Playlists</span>
+            </div>
+          </li>
+          <li className="pointer">
+        <div>
+        {playlists.map((playlist) => {
           <h1 style={{color: "white"}}>{playlist.listName}</h1>
-         })}
+        })}
         
-         </div>
-           </li>
-         </NavLink>
-       </ul>
-     </aside> : null}
-     </div>
+        </div>
+          </li>
+        </NavLink>
+      </ul>
+    </aside> : null}
+    </div>
 
-     {videoPlayer && isDesktop ? null : (
+    {videoPlayer && isDesktop ? null : (
         <div className="home-wrapper-mobile">
         <ul className="home-wrapper__div__bottom__list">
           <NavLink to="/" className="side-nav-link">

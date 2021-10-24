@@ -2,14 +2,44 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useVideo} from "../../contexts/VideoContext";
 import Sidebar from "../../components/sidebar";
-import Navbar from "../../components/Navbar"
+import Navbar from "../../components/Navbar/Navbar"
+import "../../components/Home.css";
+import axios from "axios";
+import { useParams } from "react-router";
+import { useAuth } from "../../contexts/AuthContext";
+
 const Playlist = () => {
-    const {
-        state: { playlists }
-    } = useVideo();
+    
+  const {
+    state: { playlists},
+    dispatch
+  } = useVideo();
+  const { videoId  } = useParams();
+  const { uid } = useAuth()
+  const {playlistId} = useParams();
+
+
+  // const removeVideoFromPlaylist = async(videoId,playlistId) => {
+  //   try {
+  //     const {data} =  await axios.delete(`http://localhost:5000/playlists/${uid}/${playlistId}/${videoId}`);
+  //     dispatch({ type: "REMOVE_FROM_PLAYLIST", payload: {data:data.playlists} })
+  //     console.log("deleted")
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+  // const removePlaylist = async(playlistId) => {
+  //   try {
+  //     const {data} =  await axios.delete(`http://localhost:5000/playlists/${uid}/${playlistId}`)
+  //     dispatch({ type: "REMOVE_PLAYLIST", payload: {data:data.playlists} })
+  //     console.log("deleted")
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
     return (    
         <>
-        <div className="main_wrapper">
+        <div className="main_wrapper_player">
         <Sidebar />
         <div className="home-wrapper__main">   
         <Navbar />
@@ -21,8 +51,9 @@ const Playlist = () => {
       <div className="playlist-wrapper" >
       {playlists.map((item) => {
           return ( 
-      <div>
-      <span><h3 className="playListName">{item?.name}</h3></span>
+      <div key={item._id}>
+      <span><h3 className="playListName">{item?.name}</h3>
+      </span>
 
       <div className= "designVideoList">
         { item.videos.length !== 0 ? item.videos.map((item) => {
@@ -39,11 +70,8 @@ const Playlist = () => {
                   alt="thumbnail"
                 />
                 <div className="video-description">
-                    <img className="avatar-img" src={item.avatar} alt="avatar"/>
+                  <img className="avatar-img" src={item.avatar} alt="avatar"/>
                   <h4 className="video-title">{item.videoTitle}</h4>
-                  <span>
-                  <i style={{color: "red", float: "right", padding: "10px", backgroundColor: "hsl(0deg 0% 20%)", borderRadius: "100%"}} className="far fa-trash-alt"></i>
-                  </span>
                   <p className="small-description">{item.channelName}</p>
                   <p className="small-level">Level: {item.level}</p>
                 </div>

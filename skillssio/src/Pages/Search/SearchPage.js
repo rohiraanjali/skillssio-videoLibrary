@@ -1,7 +1,9 @@
 
 import "./SearchPage.css"
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/sidebar";
+import { NavLink , Link} from "react-router-dom";
+
 
 const SearchPage = () => {
     return (
@@ -21,8 +23,10 @@ const SearchPage = () => {
         <div className="skills-category-name">Graphic Design</div>
         </button>
         <button className="skills-category design">
+        <Link style={{textDecoration: "none"}} to="/video/60b4da1ed4016f1244919c64">
         <i class="fab fa-figma"></i>
-        <div className="skills-category-name">Product Design</div>
+        <div className="skills-category-name" >Product Design</div>
+        </Link>
         </button>
         <button className="skills-category">
         <i class="fab fa-youtube"></i>

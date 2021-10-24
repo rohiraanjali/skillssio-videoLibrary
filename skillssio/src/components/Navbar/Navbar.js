@@ -1,10 +1,10 @@
 import { NavLink , Link , Outlet, useNavigate} from "react-router-dom"
 import React, {useState} from "react"
 import "./Navbar.css";
-import searchIcon from "./search.svg";
-import Backdrop from "../utils/Backdrop/Backdrop"
-import {useAuth} from "../contexts/AuthContext"
-import Loading from "../utils/Loading"
+import searchIcon from "../search.svg";
+import Backdrop from "../../utils/Backdrop/Backdrop"
+import {useAuth} from "../../contexts/AuthContext"
+import Loading from "../../utils/Loading"
 
 const Navbar = () => {
 

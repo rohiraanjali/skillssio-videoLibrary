@@ -18,14 +18,20 @@ export const VideoProvider = ({ children }) => {
     case "CREATE_PLAYLIST":{
       return {...state,playlists:action.payload.data}
     }
+    case "REMOVE_PLAYLIST": {
+      return {...state,playlists:action.payload.data};
+    }
     case "ADD_TO_PLAYLIST":{
+      return {...state,playlists:action.payload.data}
+    }
+    case "REMOVE_FROM_PLAYLIST": {
       return {...state,playlists:action.payload.data}
     }
     case "UPDATE_DATA":{
       return {...state,...action.payload.data}
     }
-      case "UPDATE_VIDEOS": {
-        return {...state, videos: action.payload.data}
+    case "UPDATE_VIDEOS": {
+      return {...state, videos: action.payload.data}
       }
       default:
         return state;

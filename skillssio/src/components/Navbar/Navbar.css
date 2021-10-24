@@ -82,5 +82,8 @@ input#search-bar-home {
   background-color: hsl(0deg 0% 20%);
   height: 40px;
   padding: 0px 20px;
+  position: relative;
+  top: 8px;
+  margin-right: 20px;
 
 }

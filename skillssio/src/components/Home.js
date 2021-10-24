@@ -1,6 +1,6 @@
 import "./Home.css"
 import Sidebar from "./sidebar";
-import Navbar from "./Navbar"
+import Navbar from "./Navbar/Navbar"
 import React from "react";
 import { NavLink , Link } from "react-router-dom";
 import HomeImg from "../Assets/Images/img1.png";

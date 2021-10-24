@@ -12,8 +12,9 @@ const {videoId} = useParams();
 const {
     state: { playlists , watchLater, videos } , dispatch
   } = useVideo();
-   const { uid } = useAuth()
-   const video = videos.find(v => v._id === videoId)
+  const { uid } = useAuth()
+  const video = videos.find(v => v._id === videoId)
+
 
 const addVideoToPlaylist = async(videoId,playlistId,playlistIndex,toast) => {
   try {
@@ -51,31 +52,16 @@ const createPlaylist = async(name) => {
   }
 }
 
-
-const removePlaylist = async(playlistId) => {
-  try {
-      const {status,data} = await axios.delete(`http://localhost:5000/playlists/${uid}/${playlistId}`);
-      if(status === 200){
-          dispatch({type:"REMOVE_PLAYLIST",data:data.playlists});
-      }
-  } catch (error) {
-      // toast(true);
-      setTimeout( () => {
-          // toast(false);
-      },2000)
-  }
-}
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if(playlistName !== "") {
         createPlaylist(playlistName);
         setPlaylistName("");
-   
+  
     }
     else{
-console.log("error hai yarr")
+console.log("error")
     }
 }
 
