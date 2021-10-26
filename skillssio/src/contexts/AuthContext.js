@@ -1,6 +1,4 @@
-import { Action } from "history";
 import { createContext , useReducer, useContext} from "react";
-import Backdrop from "../utils/Backdrop/Backdrop";
 
 export const AuthContext = createContext();
 

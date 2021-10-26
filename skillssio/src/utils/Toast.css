@@ -1,11 +1,18 @@
-.alert-style {
-    font-size: 20;
-    background-color: red;
-    width: 90%;
-    height: 100%;
-    margin: auto;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    font-size: 0.9rem;
+
+.toast1{
+    font-size:1rem;
+    padding:1rem;
 }
+
+.toast1 .fa-badge-check,.toast1 .fa-window-close{
+    animation: zoom-in-out 1s infinite ease-in-out;
+}
+ 
+@keyframes zoom-in-out{
+    from {
+    transform:scale(0.5); 
+    }
+    to{
+    transform:scale(2);
+    }
+  }

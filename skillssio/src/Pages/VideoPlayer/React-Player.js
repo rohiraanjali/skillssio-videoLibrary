@@ -32,7 +32,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
   const likeVideo = async() => {
     try {
-      const {data} =  await axios.post(`http://localhost:5000/likedVideos/${uid}/${videoId}`)
+      const {data} =  await axios.post(`https://skillssio-backend-deploy.herokuapp.com/likedVideos/${uid}/${videoId}`)
       dispatch({ type: "UPDATE_LIKEDVIDEOS", payload: {data:data.likedVideos} })
       
     } catch (error) {
@@ -41,7 +41,7 @@ import { useAuth } from "../../contexts/AuthContext";
 }
 const removeLikeVideos = async(videoId) => {
   try {
-    const {data} =  await axios.delete(`http://localhost:5000/likedVideos/${uid}/${videoId}`)
+    const {data} =  await axios.delete(`https://skillssio-backend-deploy.herokuapp.com/likedVideos/${uid}/${videoId}`)
     dispatch({ type: "UPDATE_LIKEDVIDEOS", payload: {data:data.likedVideos} })
     console.log("deleted")
   } catch (error) {
@@ -50,7 +50,7 @@ const removeLikeVideos = async(videoId) => {
 }
 const dispatchHistory = async() => {
     try {
-      const {data} =  await axios.post(`http://localhost:5000/history/${uid}/${videoId}`)
+      const {data} =  await axios.post(`https://skillssio-backend-deploy.herokuapp.com/history/${uid}/${videoId}`)
       dispatch({ type: "UPDATE_HISTORY", payload: {data:data.history} })
     } catch (error) {
       console.log(error);

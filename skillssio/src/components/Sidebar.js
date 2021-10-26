@@ -123,7 +123,7 @@ const Sidebar = () => {
               <i class="fas fa-thumbs-up pointer"></i>
             </li>
           </NavLink>
-         
+        
           <NavLink to="/playlists" className="side-nav-link">
             <li className="pointer-mobile">
             <i className="fas fa-list pointer"></i>

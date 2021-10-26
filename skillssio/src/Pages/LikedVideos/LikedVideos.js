@@ -26,7 +26,7 @@ const {
       
         const removeLikeVideos = async(videoId) => {
           try {
-            const {data} =  await axios.delete(`http://localhost:5000/likedVideos/${uid}/${videoId}`)
+            const {data} =  await axios.delete(`https://skillssio-backend-deploy.herokuapp.com/likedVideos/${uid}/${videoId}`)
             dispatch({ type: "UPDATE_LIKEDVIDEOS", payload: {data:data.likedVideos} })
             console.log("deleted")
           } catch (error) {

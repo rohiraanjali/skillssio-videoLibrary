@@ -50,13 +50,13 @@ const RegistrationForm = () => {
     }
 
     const handleSubmit = async(e) => {
-       e.preventDefault();
-       if(formValidate(state)){
-         console.log(state)
-       }
+    e.preventDefault();
+      if(formValidate(state)){
+        console.log(state)
+      }
         try {
             setLoading(true)
-            const {data,status} = await axios.post("http://localhost:5000/users/signup",state);
+            const {data,status} = await axios.post("https://skillssio-backend-deploy.herokuapp.com/users/signup",state);
 
             if(status === 201){
               setToast(data.message);
@@ -77,7 +77,7 @@ const RegistrationForm = () => {
             //  setErrors(state => ({...state,email:data.message}) )
             //  }
           }
-       }
+        }
     
 
     return (

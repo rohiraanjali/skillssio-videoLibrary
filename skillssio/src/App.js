@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     (async function() {
-      const {data} = await axios.get("http://localhost:5000/videos")
+      const {data} = await axios.get("https://skillssio-backend-deploy.herokuapp.com/videos")
       dispatch({type: "UPDATE_VIDEOS", payload: {data:data.videos}})
       console.log(data)
     }) ()
@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     if(uid === undefined) return
     (async function() {
-      const {data} = await axios.get(`http://localhost:5000/users/${uid}`)
+      const {data} = await axios.get(`https://skillssio-backend-deploy.herokuapp.com/users/${uid}`)
       console.log(data)
       dispatch({type: "UPDATE_DATA", payload: {data}})
     }) ()
@@ -58,6 +58,5 @@ function App() {
   );
   
 }
-// han, phle toh yeh itte dino baad khola smjh bi ni aara kya tha.. toh mne run kra isko but backend se data le ni rha yeh phle toh thik tha ek baar app.js ka useffect chck krna 
 
 export default App;

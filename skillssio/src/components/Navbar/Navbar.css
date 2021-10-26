@@ -62,15 +62,18 @@ input#search-bar-home {
   padding-top: 0.5rem;
   padding-right: 2rem;
   color: grey;
+  z-index: 0;
 }
 
 .loginmodal__dismiss__btn {
   position: relative;
-  left: 440px;
-  bottom: 280px;
+left: 200px;
+  top: -220px; 
   background-color: hsl(0deg 0% 10%);
   color: white;
   border: none;
+  background-color: #333;
+  z-index: 1;
 }
 
 .fa-times {
@@ -85,5 +88,4 @@ input#search-bar-home {
   position: relative;
   top: 8px;
   margin-right: 20px;
-
 }

@@ -6,6 +6,13 @@
   --font-fam-2: "Arimo", sans-serif;
 }
 
+.popup-navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+
+  
 .mainback {
     background-color: #333;
     width:90%;

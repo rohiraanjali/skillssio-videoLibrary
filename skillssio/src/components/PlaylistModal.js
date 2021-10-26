@@ -1,7 +1,6 @@
 import React from "react";
 import {useAuth} from "../contexts/AuthContext";
 import { useVideo } from "../contexts/VideoContext";
-import { v4 as uuidv4 } from 'uuid';
 import { useParams } from "react-router";
 import axios from "axios"
 
@@ -10,7 +9,7 @@ const PlaylistModal = ({setDisplay , display , videoDetails}) => {
 
 const {videoId} = useParams();
 const {
-    state: { playlists , watchLater, videos } , dispatch
+    state: { playlists , videos } , dispatch
   } = useVideo();
   const { uid } = useAuth()
   const video = videos.find(v => v._id === videoId)
@@ -19,14 +18,14 @@ const {
 const addVideoToPlaylist = async(videoId,playlistId,playlistIndex,toast) => {
   try {
       if( playlists[playlistIndex].videos.find( v => v._id === videoId)) {
-          const {status,data} = await axios.delete(`http://localhost:5000/playlists/${uid}/${playlistId}/${videoId}`);
+          const {status,data} = await axios.delete(`https://skillssio-backend-deploy.herokuapp.com/playlists/${uid}/${playlistId}/${videoId}`);
           // if(status === 200){
           //      dispatch({type:"REMOVE_FROM_PLAYLIST",payload:data.playlists});
           // }
         return;
       };
 
-      const {status,data} = await axios.post(`http://localhost:5000/playlists/${uid}/${playlistId}/${videoId}`);
+      const {status,data} = await axios.post(`https://skillssio-backend-deploy.herokuapp.com/playlists/${uid}/${playlistId}/${videoId}`);
       if(status === 200){
         dispatch({ type: "ADD_TO_PLAYLIST", payload: {data:data.playlists} })
         console.log(data)      
@@ -42,7 +41,7 @@ const addVideoToPlaylist = async(videoId,playlistId,playlistIndex,toast) => {
 
 const createPlaylist = async(name) => {
   try {
-      const {data} = await axios.post(`http://localhost:5000/playlists/${uid}`,{name});
+      const {data} = await axios.post(`https://skillssio-backend-deploy.herokuapp.com/playlists/${uid}`,{name});
       console.log(data)
       dispatch({ type: "CREATE_PLAYLIST", payload: {data:data.playlists} })
   } catch (error) {
@@ -67,7 +66,7 @@ console.log("error")
 
 const dispatchWatchLater = async() => {
   try {
-    const {data} =  await axios.post(`http://localhost:5000/watchLater/${uid}/${videoId}`)
+    const {data} =  await axios.post(`https://skillssio-backend-deploy.herokuapp.com/watchLater/${uid}/${videoId}`)
     dispatch({ type: "UPDATE_WATCHLATER", payload: {data:data.watchLater} })
   } catch (error) {
     console.log(error);

@@ -1,7 +1,7 @@
 
 import "../../components/Home.css"
 import React ,{useEffect} from "react";
-import { NavLink , Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { useVideo } from "../../contexts/VideoContext";
 import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/Navbar/Navbar";
@@ -29,7 +29,7 @@ const HistoryVideos = () => {
   
   const removeHistory = async(videoId) => {
     try {
-      const {data} =  await axios.delete(`http://localhost:5000/history/${uid}/${videoId}`)
+      const {data} =  await axios.delete(`https://skillssio-backend-deploy.herokuapp.com/history/${uid}/${videoId}`)
       dispatch({ type: "UPDATE_HISTORY", payload: {data:data.history} })
       console.log("deleted")
     } catch (error) {

@@ -26,7 +26,7 @@ const {
 
 const removeWatchLater = async(videoId) => {
   try {
-    const {data} =  await axios.delete(`http://localhost:5000/watchLater/${uid}/${videoId}`)
+    const {data} =  await axios.delete(`https://skillssio-backend-deploy.herokuapp.com/watchLater/${uid}/${videoId}`)
     dispatch({ type: "UPDATE_WATCHLATER", payload: {data:data.watchLater} })
     console.log("deleted")
   } catch (error) {

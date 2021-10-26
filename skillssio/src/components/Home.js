@@ -4,10 +4,15 @@ import Navbar from "./Navbar/Navbar"
 import React from "react";
 import { NavLink , Link } from "react-router-dom";
 import HomeImg from "../Assets/Images/img1.png";
-import searchIcon from "./search.svg";
 import { useVideo } from "../contexts/VideoContext";
+import { useAuth } from "../contexts/AuthContext";
+import Toast from "../utils/Toast";
+import { useState } from "react";
+
 const Home = () => {
-  const {state} = useVideo()
+  const {isUserLoggedIn,uid} = useAuth();
+  const {state} = useVideo();
+  const [errorToast, setErrorToast] = useState(false);
   const videos = state.videos;
     return (
 <div className="main_wrapper">
@@ -87,6 +92,8 @@ const Home = () => {
         })}
       </main>
     </div>
+    {!isUserLoggedIn && <Toast show={errorToast} error={true} background="red" onClick={() => setErrorToast(false)} color="white" message="Something went wrong with server"/>
+}
     </div>
     )
 }
